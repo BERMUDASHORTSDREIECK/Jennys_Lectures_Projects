@@ -1,6 +1,3 @@
-# ideas:
-# safer random generator and mimic apple password generator format
-
 import random
 
 final_string = ''
