@@ -1,3 +1,7 @@
+# ideas
+# apple auto gen password style\
+# safer random int algorithm
+
 import random
 
 final_string = ''
