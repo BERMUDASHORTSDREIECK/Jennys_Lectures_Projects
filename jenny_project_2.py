@@ -1,27 +1,40 @@
-# ideas
-# apple auto gen password style\
-# safer random int algorithm
+# a password generator
+# tried various methods for string generation and randomization
+# naming schemes and spacing is off at times
+
 
 import random
+import secrets
+import string
+
 
 final_string = ''
-print('welcome padawan')
-letter_count = int(input('insert letter count '))
-letters = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-for i in range(letter_count):
-    final_string += letters[random.randint(0, len(letters)-1)]
-print(final_string)
 
-symbol_count = int(input('insert symbols count '))
-symbols = list("~`!@#$%^&*()_-+={[}]|'\':;\"<,>.?/")
-for i in range(symbol_count):
-    final_string += symbols[random.randint(0, len(symbols)-1)]
-print(final_string)
+def iterator(final_string, letter_whatever_count, symbols_whatever):
+    for i in range(letter_whatever_count):
+        final_string += final_string.join(symbols_whatever[random.randint(0, len(symbols_whatever)-1)])
+    print(final_string)
+    return final_string
 
-number_count = int(input('insert numbers count '))
-for i in range(number_count):
-    final_string += str(random.randint(0, 9))
-print(final_string)
+
+def main():
+    final_string = ''
+
+    print('welcome padawan')
+    letter_count = int(input('insert letter count '))
+    letters = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    final_string = iterator(final_string, letter_count, letters)
+
+
+    symbol_count = int(input('insert symbols count '))
+    symbols = list("~`!@#$%^&*()_-+={[}]|'\':;\"<,>.?/")
+    final_string = iterator(final_string, symbol_count, symbols)
+
+
+    number_count = int(input('insert numbers count '))
+    final_string += ''.join(secrets.choice(string.digits) for i in range(number_count))
+    print(final_string)
+    return final_string
 
 
 def randomize_string(string):
@@ -34,4 +47,4 @@ def randomize_string(string):
     print(randomized_string)
 
 
-randomize_string(final_string)
+randomize_string(main())
